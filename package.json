@@ -23,10 +23,10 @@
     "start": "yarn workspace @scaffold-eth/react-app start",
     "compile": "yarn workspace @scaffold-eth/hardhat compile",
     "deploy": "yarn workspace @scaffold-eth/hardhat deploy",
-    "verify": "yarn workspace @scaffold-eth/hardhat verify",
     "watch": "yarn workspace @scaffold-eth/hardhat watch",
     "accounts": "yarn workspace @scaffold-eth/hardhat accounts",
     "balance": "yarn workspace @scaffold-eth/hardhat balance",
+    "verify": "yarn workspace @scaffold-eth/hardhat verify",
     "send": "yarn workspace @scaffold-eth/hardhat send",
     "ipfs": "yarn workspace @scaffold-eth/react-app ipfs",
     "surge": "yarn workspace @scaffold-eth/react-app surge",
@@ -51,8 +51,7 @@
     "graph-ship-local": "yarn graph-prepare && yarn graph-codegen && yarn graph-deploy-local",
     "deploy-and-graph": "yarn deploy && yarn graph-ship-local",
     "theme": "yarn workspace @scaffold-eth/react-app theme",
-    "watch-theme": "yarn workspace @scaffold-eth/react-app watch",
-    "postinstall": "husky install"
+    "watch-theme": "yarn workspace @scaffold-eth/react-app watch"
   },
   "workspaces": {
     "packages": [
@@ -67,8 +66,5 @@
       "**/hardhat-ts/**"
     ]
   },
-  "dependencies": {},
-  "devDependencies": {
-    "husky": "^7.0.2"
-  }
+  "dependencies": {}
 }
