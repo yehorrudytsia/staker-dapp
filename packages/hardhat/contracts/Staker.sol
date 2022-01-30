@@ -5,7 +5,7 @@ import "./ExampleExternalContract.sol";
 
 
 contract Staker {
-
+  event Stake(address, uint256);
   mapping (address => uint256) public balances;
   uint256 public threshold = 2 ether;
   uint256 public deadline = block.timestamp + 180 seconds;
@@ -45,6 +45,8 @@ contract Staker {
       exampleExternalContract.complete{value: address(this).balance}();
       executed = true;
     }
+
+    emit Stake(msg.sender, msg.value);
   }
 
   receive() external payable {
