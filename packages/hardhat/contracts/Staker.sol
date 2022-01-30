@@ -17,13 +17,17 @@ contract Staker {
     exampleExternalContract = ExampleExternalContract(exampleExternalContractAddress);
   }
 
-  modifier checkDeadline() {
+  modifier afterDeadline() {
     require(timeLeft() == 0, "Deadline wasnt reached.");
     _;
   }
 
-  function stake() public payable {
+  modifier beforeDeadline() {
+    require(timeLeft() > 0, "Deadline was reached.");
+    _;
+  }
 
+  function stake() public payable beforeDeadline {
     balances[msg.sender] += msg.value;
   }
 
@@ -31,7 +35,7 @@ contract Staker {
     stake();
   }
 
-  function execute() external checkDeadline {
+  function execute() external afterDeadline {
     if (address(this).balance >= threshold)
       exampleExternalContract.complete{value: address(this).balance}();
     else withdrawAllowance = true;
